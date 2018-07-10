@@ -6,10 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Boards.destroy_all
+Board.destroy_all
+List.destroy_all
+Card.destroy_all
 
-board1 = Boards.create({title: 'board1'})
-board2 = Boards.create({title: 'board2'})
-board3 = Boards.create({title: 'board3'})
-board4 = Boards.create({title: 'board4'})
-board5 = Boards.create({title: 'board5'})
+board1 = Board.create({title: 'board1'})
+board2 = Board.create({title: 'board2'})
+board3 = Board.create({title: 'board3'})
+board4 = Board.create({title: 'board4'})
+board5 = Board.create({title: 'board5'})
+
+list1 = List.create({title: 'list1', board: board1 })
+list2 = List.create({title: 'list2', board: board2 })
+list3 = List.create({title: 'list3', board: board3 })
+list4 = List.create({title: 'list4', board: board4 })
+list5 = List.create({title: 'list5', board: board5 })
+
+card1 = Card.create({title: 'card1', list: list1 })
+card2 = Card.create({title: 'card2', list: list2 })
+card3 = Card.create({title: 'card3', list: list3 })
+card4 = Card.create({title: 'card4', list: list4 })
+card5 = Card.create({title: 'card5', list: list5 })
