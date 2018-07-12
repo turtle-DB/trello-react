@@ -7,7 +7,7 @@ function Board(props) {
   return (
     <div>
       <BoardHeader title={props.board.title}/>
-      <BoardLists />
+      <BoardLists boardId={props.board.id}/>
     </div>
   )
 }
