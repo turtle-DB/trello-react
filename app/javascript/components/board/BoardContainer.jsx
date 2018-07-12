@@ -9,15 +9,15 @@ class BoardContainer extends React.Component {
     store: PropTypes.object.isRequired
   };
 
-  // componentDidMount() {
-  //   const store = this.context.store;
-  //   this.unsubscribe = store.subscribe(() => this.forceUpdate());
-  //   //store.dispatch(actions.fetchBoards());
-  // }
-  //
-  // componentWillUnmount() {
-  //   this.unsubscribe();
-  // }
+  componentDidMount() {
+    const store = this.context.store;
+    this.unsubscribe = store.subscribe(() => this.forceUpdate());
+    store.dispatch(actions.fetchBoard(+this.props.match.params.id));
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
   // allBoards = () => {
   //   const store = this.context.store;
@@ -25,9 +25,12 @@ class BoardContainer extends React.Component {
   // }
 
   render() {
+    const store = this.context.store;
+    const id = +this.props.match.params.id;
+    const board = store.getState().boards.find(board => board.id === id);
     return (
       <div>
-        <Board />
+        <Board board={board}/>
       </div>
     )
   }

@@ -1,6 +1,23 @@
 import apiClient from '../lib/ApiClient';
 import * as types from '../constants/ActionTypes';
 
+
+export function fetchBoardRequest() {
+  return { type: types.FETCH_BOARD_REQUEST };
+}
+
+export function fetchBoardSuccess(board) {
+  return { type: types.FETCH_BOARD_SUCCESS, board };
+}
+
+export function fetchBoard(id) {
+  return function(dispatch) {
+    dispatch(fetchBoardRequest());
+    apiClient.fetchBoard(id, fetchedBoard => {
+      dispatch(fetchBoardSuccess(fetchedBoard));
+    })
+  }
+}
 export function fetchBoardsRequest() {
   return { type: types.FETCH_BOARDS_REQUEST };
 }

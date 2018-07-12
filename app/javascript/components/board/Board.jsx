@@ -6,7 +6,7 @@ import BoardLists from './BoardLists';
 function Board(props) {
   return (
     <div>
-      <BoardHeader />
+      <BoardHeader title={props.board.title}/>
       <BoardLists />
     </div>
   )

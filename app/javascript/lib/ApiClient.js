@@ -30,7 +30,13 @@ const apiClient = {
       .then(unwrapData)
       .then(callback)
       .catch(logError);
-  }
+  },
+  fetchBoard: function(id, callback) {
+    return axios.get(routes.FETCH_BOARD_URL(id))
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
+  },
 };
 
 export default apiClient;
