@@ -2,6 +2,7 @@ import React from 'react';
 
 import List from './../list/List';
 import PropTypes from 'prop-types';
+import AddListContainer from './AddListContainer';
 
 class BoardLists extends React.Component {
   static contextTypes = {
@@ -37,12 +38,7 @@ class BoardLists extends React.Component {
                 <div id="existing-lists" className="existing-lists">
                     {lists}
                 </div>
-                <div id="new-list" className="new-list"><span>Add a list...</span>
-                    <input type="text" placeholder="Add a list..." />
-                    <div>
-                        <input type="submit" className="button" value="Save" /><i className="x-icon icon"></i>
-                    </div>
-                </div>
+                <AddListContainer boardId={boardId}/>
             </div>
         </main>
     )
