@@ -16,7 +16,20 @@ class Api::ListsController < ApplicationController
   end
 
   def update
-    
+    @list = List.find(params[:id])
+
+    if @list.update(list_params)
+      render :update
+    else
+      @error = @list.errors.full_messages.join(", ")
+      render "api/shared/error", status: :unprocessable_entity
+    end
+  rescue ActiveRecord::RecordNotFound
+    @error = "Invalid list id provided"
+    render "api/shared/error", status: :not_found
+  rescue ActionController::ParameterMissing
+    @error = "Parameters not provided"
+    render "api/shared/error", status: :unprocessable_entity
   end
 
   private
@@ -25,8 +38,3 @@ class Api::ListsController < ApplicationController
     params.require(:list).permit(:title)
   end
 end
-
-# {
-#   "title": "Updated title",
-#   "position": 137882
-# }
