@@ -15,6 +15,10 @@ class Api::ListsController < ApplicationController
     render "api/shared/error", status: :not_found
   end
 
+  def update
+    
+  end
+
   private
 
   def list_params
@@ -23,8 +27,6 @@ class Api::ListsController < ApplicationController
 end
 
 # {
-#   "board_id": 1,
-#   "list": {
-#     "title": "My list"
-#   }
+#   "title": "Updated title",
+#   "position": 137882
 # }
