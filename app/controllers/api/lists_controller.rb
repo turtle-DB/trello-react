@@ -1,7 +1,6 @@
 class Api::ListsController < ApplicationController
   def create
     board = Board.find(params[:board_id])
-
     @list = List.new(list_params.merge({board: board}))
 
     if @list.save
